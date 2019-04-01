@@ -54,6 +54,7 @@
       <groupId>au.org.aurin</groupId>
       <artifactId>indexing-data-reader</artifactId>
       <version>1.1.1</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.geotools.jdbc</groupId>
@@ -63,12 +64,13 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-compress</artifactId>
-      <version>[1.18,)</version>
+      <version>1.8.1</version>
     </dependency>
     <dependency>
       <groupId>au.org.aurin</groupId>
       <artifactId>aggregate-functions-oms</artifactId>
       <version>0.0.11</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -79,21 +81,25 @@
       <groupId>info.cukes</groupId>
       <artifactId>cucumber-picocontainer</artifactId>
       <version>1.1.5</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>info.cukes</groupId>
       <artifactId>cucumber-junit</artifactId>
       <version>1.1.5</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.github.tomakehurst</groupId>
       <artifactId>wiremock</artifactId>
       <version>1.40</version>
+      <scope>test</scope>
     </dependency>
 
     <!-- Main Dependencies -->
@@ -116,6 +122,7 @@
       <groupId>org.geotools</groupId>
       <artifactId>gt-shapefile</artifactId>
       <version>${geotools.version}</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
@@ -171,6 +178,7 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>${slf4jVersion}</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>au.org.aurin</groupId>
@@ -206,35 +214,13 @@
   </repositories>
 
   <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
         <filtering>false</filtering> <!-- this is important for binary files -->
-      </resource>
-    </resources>
+      </testResource>
+    </testResources>
     <plugins>
-        <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <executions>
-                <execution>
-                    <phase>package</phase>
-                    <goals>
-                        <goal>single</goal>
-                    </goals>
-                </execution>
-            </executions>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <addClasspath>true</addClasspath>
-                        <mainClass>org.mccaughey.MainTest</mainClass>
-                    </manifest>
-                </archive>
-                <descriptorRefs>
-                    <descriptorRef>jar-with-dependencies</descriptorRef>
-                </descriptorRefs>
-            </configuration>
-        </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
