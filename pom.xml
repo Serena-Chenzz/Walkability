@@ -49,12 +49,10 @@
   </distributionManagement>
 
   <dependencies>
-    <!-- Test Dependencies -->
     <dependency>
       <groupId>au.org.aurin</groupId>
       <artifactId>indexing-data-reader</artifactId>
       <version>1.1.1</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.geotools.jdbc</groupId>
@@ -70,7 +68,6 @@
       <groupId>au.org.aurin</groupId>
       <artifactId>aggregate-functions-oms</artifactId>
       <version>0.0.11</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -81,28 +78,22 @@
       <groupId>info.cukes</groupId>
       <artifactId>cucumber-picocontainer</artifactId>
       <version>1.1.5</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>info.cukes</groupId>
       <artifactId>cucumber-junit</artifactId>
       <version>1.1.5</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.github.tomakehurst</groupId>
       <artifactId>wiremock</artifactId>
       <version>1.40</version>
-      <scope>test</scope>
     </dependency>
-
-    <!-- Main Dependencies -->
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
@@ -122,7 +113,6 @@
       <groupId>org.geotools</groupId>
       <artifactId>gt-shapefile</artifactId>
       <version>${geotools.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.geotools</groupId>
@@ -178,7 +168,6 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>${slf4jVersion}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>au.org.aurin</groupId>
