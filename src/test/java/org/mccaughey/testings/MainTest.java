@@ -81,6 +81,7 @@ public class MainTest extends TestCase{
 
             //The region is a SimpleFeatureSource object
             SimpleFeatureSource regionSrc = networkBufferOMS.regions;
+            System.out.println(regionSrc);
 
             //Start to build the featureCollections
             List<SimpleFeature> ZScoreFeatures = new ArrayList<SimpleFeature>();

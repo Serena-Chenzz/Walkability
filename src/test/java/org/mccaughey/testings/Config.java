@@ -25,5 +25,4 @@ public class Config {
         sfb.add(ValidationUtils.isValidDouble(lum) ? lum : null);
         return sfb.buildFeature(region.getID());
     }
-
 }
