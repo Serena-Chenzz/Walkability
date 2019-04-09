@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e4611c9d-bbe2-4446-a130-6631cbfdb8c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/mccaughey/testings/MainTestHadoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mccaughey/MainTestHadoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,10 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/mccaughey/MainTestHadoop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
+            <state relative-caret-position="-277">
               <caret line="76" column="102" selection-start-line="76" selection-start-column="102" selection-end-line="76" selection-end-column="102" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -76,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
+            <state relative-caret-position="250">
+              <caret line="295" column="65" lean-forward="true" selection-start-line="295" selection-start-column="65" selection-end-line="295" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -125,6 +125,8 @@
     <findStrings>
       <find>scope</find>
       <find>dependencie</find>
+      <find>test</find>
+      <find>jar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,7 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/org/mccaughey/testings/Doodle.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/mccaughey/testings/Config.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/mccaughey/testings/MainTest.java" />
@@ -141,6 +142,7 @@
         <option value="$PROJECT_DIR$/src/test/java/org/mccaughey/testings/HadoopOutputFormat.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/mccaughey/testings/MainTestHadoop.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/mccaughey/MainTestHadoop.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -206,27 +208,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="mccaughey" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="walkability" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Walkability" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="walkability" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Walkability" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="walkability" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Walkability" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="testings" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -235,7 +216,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554772855499" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554776478013" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -349,7 +330,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992636" visible="true" weight="0.04195804" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4992636" visible="true" weight="0.16783217" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -419,13 +400,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="64" column="16" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/geotools/gt-main/10.6/gt-main-10.6.jar!/org/geotools/data/DataUtilities.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8470">
@@ -492,11 +466,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/mccaughey/MainTestHadoop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="-277">
           <caret line="76" column="102" selection-start-line="76" selection-start-column="102" selection-end-line="76" selection-end-column="102" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="295" column="65" lean-forward="true" selection-start-line="295" selection-start-column="65" selection-end-line="295" selection-end-column="65" />
         </state>
       </provider>
     </entry>
