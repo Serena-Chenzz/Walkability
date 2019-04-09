@@ -1,4 +1,4 @@
-package org.mccaughey.testings;
+package org.mccaughey;
 
 import java.net.URL;
 import java.util.*;
@@ -8,13 +8,10 @@ import java.io.File;
 import java.io.FileWriter;
 
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.conf.*;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
-import org.apache.hadoop.util.*;
 
 import org.geotools.data.DataUtilities;
-import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.data.simple.SimpleFeatureIterator;
 import org.geotools.geojson.feature.FeatureJSON;
 import org.json.*;
@@ -76,8 +73,8 @@ public class MainTestHadoop  {
 
 
                         //Process this small temp json file, then delete the file
-                        URL roadsUrl = MainTest.class.getClass().getResource("/user/input/psma_cut_projected.geojson.gz");
-                        URL pointsUrl = MainTest.class.getClass().getResource("/user/intermediate"+ key + ".json");
+                        URL roadsUrl = new File("/user/input/psma_cut_projected.geojson.gz").toURI().toURL();
+                        URL pointsUrl = new File("/user/intermediate"+ key + ".json").toURI().toURL();
 
                         NetworkBufferOMS networkBufferOMS = new NetworkBufferOMS();
                         networkBufferOMS.network = DataUtilities.source(GeoJSONUtilities.readFeatures(roadsUrl));
