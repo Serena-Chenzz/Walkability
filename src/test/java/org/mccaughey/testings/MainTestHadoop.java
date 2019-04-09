@@ -14,9 +14,13 @@ import org.apache.hadoop.mapred.*;
 import org.apache.hadoop.util.*;
 
 import org.geotools.data.DataUtilities;
+import org.geotools.data.simple.SimpleFeatureCollection;
+import org.geotools.data.simple.SimpleFeatureIterator;
+import org.geotools.geojson.feature.FeatureJSON;
 import org.json.*;
 import org.mccaughey.connectivity.NetworkBufferOMS;
 import org.mccaughey.utilities.GeoJSONUtilities;
+import org.opengis.feature.simple.SimpleFeature;
 
 
 public class MainTestHadoop  {
@@ -62,7 +66,7 @@ public class MainTestHadoop  {
                     //We only have one value actually.
                     while (values.hasNext()) {
                         Text val = values.next();
-                        File file=new File("src/main/resources/"+ key + ".json");
+                        File file=new File("/user/intermediate"+ key + ".json");
                         file.createNewFile();
                         FileWriter fileWriter = new FileWriter(file);
 
@@ -72,8 +76,8 @@ public class MainTestHadoop  {
 
 
                         //Process this small temp json file, then delete the file
-                        URL roadsUrl = MainTest.class.getClass().getResource("/psma_cut_projected.geojson.gz");
-                        URL pointsUrl = MainTest.class.getClass().getResource("src/main/resources/"+ key + ".json");
+                        URL roadsUrl = MainTest.class.getClass().getResource("/user/input/psma_cut_projected.geojson.gz");
+                        URL pointsUrl = MainTest.class.getClass().getResource("/user/intermediate"+ key + ".json");
 
                         NetworkBufferOMS networkBufferOMS = new NetworkBufferOMS();
                         networkBufferOMS.network = DataUtilities.source(GeoJSONUtilities.readFeatures(roadsUrl));
@@ -82,10 +86,15 @@ public class MainTestHadoop  {
                         networkBufferOMS.distance = 1600.0;
                         networkBufferOMS.run();
 
-                        GeoJSONUtilities.writeFeatures(networkBufferOMS.regions.getFeatures(),
-                                new File("src/main/resources/"+key+"_networkBufferOMSTest.json").toURI().toURL());
+                        SimpleFeatureIterator regionSrc = networkBufferOMS.regions.getFeatures().features();
+                        String resValue = "";
+                        while(regionSrc.hasNext()){
+                            SimpleFeature currRegion = regionSrc.next();
+                            FeatureJSON  fjson = new FeatureJSON();
+                            resValue += fjson.toString(currRegion);
+                        }
 
-                        output.collect(key, new Text("src/main/resources/"+key+"_networkBufferOMSTest.json"));
+                        output.collect(key, new Text(resValue));
                         file.delete();
                         System.out.println("tempfile 1 has been deleted");
                     }
@@ -111,8 +120,8 @@ public class MainTestHadoop  {
         conf.setInputFormat(TextInputFormat.class);
         conf.setOutputFormat(TextOutputFormat.class);
 
-        FileInputFormat.setInputPaths(conf, "/RndmMultiPoint5ptsProjected.json");
-        FileOutputFormat.setOutputPath(conf, new Path("target/"));
+        FileInputFormat.setInputPaths(conf, "user/input/RndmMultiPoint5ptsProjected.json");
+        FileOutputFormat.setOutputPath(conf, new Path("user/output"));
 
         JobClient.runJob(conf);
     }
