@@ -117,8 +117,8 @@ public class MainTestHadoop  {
         conf.setInputFormat(TextInputFormat.class);
         conf.setOutputFormat(TextOutputFormat.class);
 
-        FileInputFormat.setInputPaths(conf, "user/input/RndmMultiPoint5ptsProjected.json");
-        FileOutputFormat.setOutputPath(conf, new Path("user/output"));
+        FileInputFormat.setInputPaths(conf, "RndmMultiPoint5ptsProjected.json");
+        FileOutputFormat.setOutputPath(conf, new Path("output"));
 
         JobClient.runJob(conf);
     }
