@@ -1,3 +1,5 @@
+package org.mccaughey.ActiveMQ;
+
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -24,7 +26,7 @@ public class receiver {
         Connection connection = connectionFactory.createConnection();
         connection.start();
 
-        // Creating session for seding messages
+        // Creating session for receiving messages
         Session session = connection.createSession(false,
                 Session.AUTO_ACKNOWLEDGE);
 
