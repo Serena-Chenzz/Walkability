@@ -47,8 +47,6 @@ public class MainTest {
             SimpleFeature[] pointArray = {point};
             URL roadsUrl = MainTest.class.getClass().getResource("/psma_cut_projected.geojson.gz");
             URL landUseURL = MainTest.class.getClass().getResource("/MB_WA_2006_census_projected.shp");
-            File landUseShapeFile = new File(landUseURL.toURI());
-            FileDataStore landUseDataStore = FileDataStoreFinder.getDataStore(landUseShapeFile);
 
             List<String> classifications = new ArrayList<String>();
             classifications.add("Parkland");
@@ -88,11 +86,11 @@ public class MainTest {
                 System.out.println("Connectivity: " + String.valueOf(connectivityFeature.getAttribute("Connectivity")));
                 Double connectivity = (Double) connectivityFeature.getAttribute("Connectivity");
 
-                SimpleFeature densityFeature = DwellingDensity.averageDensity(landUseDataStore.getFeatureSource(), feature, "TURPOP2006");
+                SimpleFeature densityFeature = DwellingDensity.averageDensity(DataUtilities.source(GeoJSONUtilities.readFeatures(landUseURL)), feature, "TURPOP2006");
                 System.out.println("Density: " + densityFeature.getAttribute("AverageDensity"));
                 Double density = (Double) densityFeature.getAttribute("AverageDensity");
 
-                SimpleFeature landUseRegionFeature = LandUseMix.summarise(landUseDataStore.getFeatureSource(), feature,
+                SimpleFeature landUseRegionFeature = LandUseMix.summarise(DataUtilities.source(GeoJSONUtilities.readFeatures(landUseURL)), feature,
                         classifications, "CATEGORY");
 //                for (String classification : classifications) {
 //                    System.out.println(classification + " area:" + landUseRegionFeature.getAttribute("LUM_" + classification));
@@ -136,9 +134,7 @@ public class MainTest {
                 System.out.println("SUMZcore: " + next.getAttribute("SumZScore"));
             }
         }
-        catch(URISyntaxException e1){
-            System.out.println(e1.getMessage());
-        }
+
         catch(IOException e2){
             System.out.println(e2.getMessage());
         }
