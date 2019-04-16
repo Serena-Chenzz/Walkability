@@ -233,7 +233,7 @@
   <build>
     <testResources>
       <testResource>
-        <directory>src/test/resources</directory>
+        <directory>src/main/resources</directory>
         <filtering>false</filtering> <!-- this is important for binary files -->
       </testResource>
     </testResources>

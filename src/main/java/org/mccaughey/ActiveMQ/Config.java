@@ -1,4 +1,4 @@
-package org.mccaughey.testings;
+package org.mccaughey.ActiveMQ;
 
 import org.geotools.feature.simple.SimpleFeatureBuilder;
 import org.geotools.feature.simple.SimpleFeatureTypeBuilder;

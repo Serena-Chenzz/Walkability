@@ -1,4 +1,4 @@
-package org.mccaughey.testings;
+package org.mccaughey.ActiveMQ;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,22 +30,12 @@ import org.mccaughey.density.DwellingDensity;
 import org.mccaughey.landuse.LandUseMix;
 import org.opengis.feature.simple.SimpleFeatureType;
 
-public class MainTest extends TestCase{
+public class MainTest {
 
-    public MainTest(String testName) {
-        super(testName);
-    }
-
-
-    public static Test suite() {
-        return new TestSuite(MainTest.class);
-    }
-
-    public void testMain(){
+    public static void testMain(SimpleFeature point){
 
         //Set the timer
         long startTIme = System.currentTimeMillis();
-
 
         try{
             /*
@@ -54,8 +44,8 @@ public class MainTest extends TestCase{
             2. Point PointFile
             3. Census Data
             * */
+            SimpleFeature[] pointArray = {point};
             URL roadsUrl = MainTest.class.getClass().getResource("/psma_cut_projected.geojson.gz");
-            URL pointsUrl = MainTest.class.getClass().getResource("/RndmMultiPoint5ptsProjected.json");
             URL landUseURL = MainTest.class.getClass().getResource("/MB_WA_2006_census_projected.shp");
             File landUseShapeFile = new File(landUseURL.toURI());
             FileDataStore landUseDataStore = FileDataStoreFinder.getDataStore(landUseShapeFile);
@@ -74,9 +64,9 @@ public class MainTest extends TestCase{
 
             NetworkBufferOMS networkBufferOMS = new NetworkBufferOMS();
             networkBufferOMS.network = DataUtilities.source(GeoJSONUtilities.readFeatures(roadsUrl));
-            networkBufferOMS.points = DataUtilities.source(GeoJSONUtilities.readFeatures(pointsUrl));
-            networkBufferOMS.bufferSize = 100.0;
-            networkBufferOMS.distance = 1600.0;
+            networkBufferOMS.points = DataUtilities.source(pointArray);
+            networkBufferOMS.bufferSize = 50.0;
+            networkBufferOMS.distance = 800.0;
             networkBufferOMS.run();
 
             //The region is a SimpleFeatureSource object

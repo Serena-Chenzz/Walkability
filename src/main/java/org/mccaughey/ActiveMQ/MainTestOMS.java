@@ -1,4 +1,4 @@
-package org.mccaughey.testings;
+package org.mccaughey.ActiveMQ;
 
 import java.io.File;
 import java.io.IOException;
