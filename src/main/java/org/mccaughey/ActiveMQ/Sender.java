@@ -22,6 +22,7 @@ import org.mccaughey.utilities.GeoJSONUtilities;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.geometry.aggregate.MultiPoint;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -56,8 +57,8 @@ public class Sender {
             // MessageProducer is used for sending messages to the queue.
             MessageProducer producer = session.createProducer(destination);
 
-            // read in the points
-            URL pointsUrl = Sender.class.getClass().getResource("/Rndm5ptsProjected.json");
+            URL pointsUrl = new File("./src/main/java/org/mccaughey/ActiveMQ/Rndm5ptsProjected.json").toURI().toURL();
+            System.out.println(pointsUrl.toString());
             SimpleFeatureIterator points = GeoJSONUtilities.readFeatures(pointsUrl).features();
 
             while(points.hasNext()){
