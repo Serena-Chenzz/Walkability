@@ -72,7 +72,7 @@ public class Receiver implements MessageListener {
                 FeatureJSON fjson = new FeatureJSON();
                 SimpleFeature point = fjson.readFeature(inputStream);
 
-                MainTest.testMain(point);
+                //MainTest.testMain(point);
             }
             else{
                 connection.close();
