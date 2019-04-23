@@ -16,6 +16,8 @@ import org.geotools.data.DataUtilities;
 import org.geotools.data.simple.SimpleFeatureIterator;
 import org.geotools.data.simple.SimpleFeatureSource;
 import org.geotools.geojson.feature.FeatureJSON;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.mccaughey.ActiveMQ.Sender;
 import org.mccaughey.connectivity.ConnectivityIndex;
 import org.mccaughey.connectivity.NetworkBufferOMS;
@@ -30,7 +32,7 @@ import java.util.List;
 
 public class GenerateConnectivity implements MessageListener,Runnable {
     // URL of the JMS server
-    private static String url = "tcp://115.146.85.43:61616";
+    private static String url = "tcp://localhost:61616";
     // default broker URL is : tcp://localhost:61616"
 
     // Name of the queue
@@ -60,7 +62,7 @@ public class GenerateConnectivity implements MessageListener,Runnable {
 
             // Creating session for receiving messages
             Session session = connection_Receive.createSession(false,
-                    Session.DUPS_OK_ACKNOWLEDGE);
+                    Session.AUTO_ACKNOWLEDGE);
 
             // Getting the queue
             Destination destination = session.createQueue(subject_Receive + "?consumer.prefetchSize=1");
@@ -88,7 +90,8 @@ public class GenerateConnectivity implements MessageListener,Runnable {
                 System.out.println("Received message '" + textMessage.getText() + "'");
 
                 String string = textMessage.getText();
-                InputStream inputStream = new ByteArrayInputStream(string.getBytes(Charset.forName("UTF-8")));
+                int index = Integer.parseInt(string.split("--")[0]);
+                InputStream inputStream = new ByteArrayInputStream(string.split("--")[1].getBytes(Charset.forName("UTF-8")));
 
                 FeatureJSON fjson = new FeatureJSON();
                 SimpleFeature region = fjson.readFeature(inputStream);
@@ -98,7 +101,25 @@ public class GenerateConnectivity implements MessageListener,Runnable {
                 SimpleFeature connectivityFeature = ConnectivityIndex.connectivity(DataUtilities.source(GeoJSONUtilities.readFeatures(roadsUrl)), region);
                 Double connectivity = (Double) connectivityFeature.getAttribute("Connectivity");
 
-                sender.sendMessage("Connectivity: "+ connectivity);
+                int currCounter;
+
+                //Check the order
+                BufferedReader br = new BufferedReader(new FileReader("./src/main/java/org/mccaughey/output/counter_connectivity.json"));
+                JSONObject counterObj = new JSONObject(br.readLine().trim());
+                currCounter = counterObj.getInt("connectivity_counter");
+
+
+                while(currCounter < index-1){
+                    br.close();
+                    Thread.sleep(50);
+                    //Check the order again
+                    br = new BufferedReader(new FileReader("./src/main/java/org/mccaughey/output/counter_connectivity.json"));
+                    counterObj = new JSONObject(br.readLine().trim());
+                    currCounter = counterObj.getInt("connectivity_counter");
+                }
+                br.close();
+                counterObj.put("connectivity_counter", index);
+
 
                 //Write the feature into the file
                 File file_connectivity = new File("./src/main/java/org/mccaughey/output/connectivityOMS.geojson");
@@ -106,6 +127,16 @@ public class GenerateConnectivity implements MessageListener,Runnable {
                 fout_1.write((fjson.toString(connectivityFeature)+",").getBytes());
                 fout_1.flush();
                 fout_1.close();
+
+                sender.sendMessage("Connectivity: "+ connectivity);
+
+                //Change the counter value
+                File file_counter = new File("./src/main/java/org/mccaughey/output/counter_connectivity.json");
+                FileOutputStream fout_00 = new FileOutputStream(file_counter, false);
+                fout_00.write(counterObj.toString().getBytes());
+                fout_00.flush();
+                fout_00.close();
+
 
             }
             else{
@@ -116,6 +147,12 @@ public class GenerateConnectivity implements MessageListener,Runnable {
             e.printStackTrace(System.out);
         }
         catch(IOException e){
+            e.printStackTrace(System.out);
+        }
+        catch(JSONException e){
+            System.out.println(e.toString());
+        }
+        catch(InterruptedException e){
             e.printStackTrace(System.out);
         }
 

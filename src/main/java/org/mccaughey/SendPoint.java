@@ -2,6 +2,8 @@ package org.mccaughey;
 
 import org.geotools.data.simple.SimpleFeatureIterator;
 import org.geotools.geojson.feature.FeatureJSON;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.mccaughey.ActiveMQ.Sender;
 import org.mccaughey.utilities.GeoJSONUtilities;
 import org.opengis.feature.simple.SimpleFeature;
@@ -17,16 +19,57 @@ public class SendPoint {
         p.run();
 
         try{
-            URL pointsUrl = new File("./src/main/java/org/mccaughey/Rndm5ptsProjected.json").toURI().toURL();
-            System.out.println(pointsUrl.toString());
-            SimpleFeatureIterator points = GeoJSONUtilities.readFeatures(pointsUrl).features();
 
-            while(points.hasNext()){
-                SimpleFeature point = points.next();
-                FeatureJSON fjson = new FeatureJSON();
-                String output = fjson.toString(point);
-                p.sendMessage(output);
+            //Create the counter_file for multiple containers to write data into files in order
+            JSONObject counterJsonRegion = new JSONObject();
+            counterJsonRegion.put("region_counter",0);
+            JSONObject counterJsonConnectivity = new JSONObject();
+            counterJsonConnectivity.put("connectivity_counter",0);
+            JSONObject counterJsonDensity = new JSONObject();
+            counterJsonDensity.put("density_counter",0);
+            JSONObject counterJsonLum = new JSONObject();
+            counterJsonLum.put("lum_counter",0);
+
+            File file_counter_region = new File("./src/main/java/org/mccaughey/output/counter_region.json");
+            //If the file has already existed, the content will be overwritten.
+            if (!file_counter_region.exists()) {
+                file_counter_region.createNewFile();
             }
+            FileOutputStream fout_00 = new FileOutputStream(file_counter_region, false);
+            fout_00.write(counterJsonRegion.toString().getBytes());
+            fout_00.flush();
+            fout_00.close();
+
+            File file_counter_connectivity = new File("./src/main/java/org/mccaughey/output/counter_connectivity.json");
+            //If the file has already existed, the content will be overwritten.
+            if (!file_counter_connectivity.exists()) {
+                file_counter_connectivity.createNewFile();
+            }
+            FileOutputStream fout_01 = new FileOutputStream(file_counter_connectivity, false);
+            fout_01.write(counterJsonConnectivity.toString().getBytes());
+            fout_01.flush();
+            fout_01.close();
+
+            File file_counter_density = new File("./src/main/java/org/mccaughey/output/counter_density.json");
+            //If the file has already existed, the content will be overwritten.
+            if (!file_counter_density.exists()) {
+                file_counter_density.createNewFile();
+            }
+            FileOutputStream fout_02 = new FileOutputStream(file_counter_density, false);
+            fout_02.write(counterJsonDensity.toString().getBytes());
+            fout_02.flush();
+            fout_02.close();
+
+            File file_counter_lum = new File("./src/main/java/org/mccaughey/output/counter_lum.json");
+            //If the file has already existed, the content will be overwritten.
+            if (!file_counter_lum.exists()) {
+                file_counter_lum.createNewFile();
+            }
+            FileOutputStream fout_03 = new FileOutputStream(file_counter_lum, false);
+            fout_03.write(counterJsonLum.toString().getBytes());
+            fout_03.flush();
+            fout_03.close();
+
 
             File file_region = new File("./src/main/java/org/mccaughey/output/regionOMS.geojson");
             //If the file has already existed, the content will be overwritten.
@@ -67,8 +110,23 @@ public class SendPoint {
             fout_3.write("{\"type\":\"FeatureCollection\",\"features\":[".getBytes());
             fout_3.flush();
             fout_3.close();
+
+            URL pointsUrl = new File("./src/main/java/org/mccaughey/Rndm5ptsProjected.json").toURI().toURL();
+            SimpleFeatureIterator points = GeoJSONUtilities.readFeatures(pointsUrl).features();
+            int counter = 0;
+            while(points.hasNext()){
+                counter++;
+                SimpleFeature point = points.next();
+                FeatureJSON fjson = new FeatureJSON();
+                String output = fjson.toString(point);
+                p.sendMessage(counter + "--" + output);
+            }
+
         }
         catch(IOException e){
+            e.printStackTrace();
+        }
+        catch(JSONException e){
             e.printStackTrace();
         }
         finally {
