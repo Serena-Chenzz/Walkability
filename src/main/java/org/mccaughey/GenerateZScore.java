@@ -38,7 +38,7 @@ import java.util.List;
 
 public class GenerateZScore implements MessageListener,Runnable {
     // URL of the JMS server
-    private static String url = "tcp://115.146.85.43:61616";
+    private static String url = "tcp://localhost:61616";
     // default broker URL is : tcp://localhost:61616"
 
     // Name of the queue
@@ -64,7 +64,7 @@ public class GenerateZScore implements MessageListener,Runnable {
 
             // Creating session for receiving messages
             Session session = connection_Receive.createSession(false,
-                    Session.DUPS_OK_ACKNOWLEDGE);
+                    Session.AUTO_ACKNOWLEDGE);
 
             Destination destination_1 = session.createQueue(subject_Receive_1 + "?consumer.prefetchSize=1");
             MessageConsumer consumer_1 = session.createConsumer(destination_1);

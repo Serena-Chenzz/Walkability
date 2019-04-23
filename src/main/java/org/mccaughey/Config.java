@@ -10,6 +10,10 @@ public class Config {
 
     public static int NUM_OF_POINTS = 5;
 
+    public static double BUFFER_SIZE = 50.0;
+
+    public static double DISTANCE = 800.0;
+
     public static SimpleFeature buildFeature(SimpleFeature region, Double connectivity, Double density, Double lum) {
 
         SimpleFeatureType sft = (SimpleFeatureType) region.getType();

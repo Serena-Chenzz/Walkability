@@ -16,6 +16,10 @@ import org.geotools.data.DataUtilities;
 import org.geotools.data.simple.SimpleFeatureIterator;
 import org.geotools.data.simple.SimpleFeatureSource;
 import org.geotools.geojson.feature.FeatureJSON;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.mccaughey.ActiveMQ.Sender;
 import org.mccaughey.connectivity.NetworkBufferOMS;
 import org.mccaughey.utilities.GeoJSONUtilities;
@@ -29,7 +33,7 @@ import java.util.List;
 
 public class GeneratePolygon implements MessageListener,Runnable {
     // URL of the JMS server
-    private static String url = "tcp://115.146.85.43:61616";
+    private static String url = "tcp://localhost:61616";
     // default broker URL is : tcp://localhost:61616"
 
     // Name of the queue
@@ -68,7 +72,7 @@ public class GeneratePolygon implements MessageListener,Runnable {
 
             // Creating session for receiving messages
             Session session = connection_Receive.createSession(false,
-                    Session.DUPS_OK_ACKNOWLEDGE);
+                    Session.AUTO_ACKNOWLEDGE);
 
             // Getting the queue
             Destination destination = session.createQueue(subject_Receive + "?consumer.prefetchSize=1");
@@ -97,7 +101,8 @@ public class GeneratePolygon implements MessageListener,Runnable {
                 System.out.println("Received message '" + textMessage.getText() + "'");
 
                 String string = textMessage.getText();
-                InputStream inputStream = new ByteArrayInputStream(string.getBytes(Charset.forName("UTF-8")));
+                int index = Integer.parseInt(string.split("--")[0]);
+                InputStream inputStream = new ByteArrayInputStream(string.split("--")[1].getBytes(Charset.forName("UTF-8")));
 
                 FeatureJSON fjson = new FeatureJSON();
                 SimpleFeature point = fjson.readFeature(inputStream);
@@ -112,8 +117,8 @@ public class GeneratePolygon implements MessageListener,Runnable {
                 NetworkBufferOMS networkBufferOMS = new NetworkBufferOMS();
                 networkBufferOMS.network = DataUtilities.source(GeoJSONUtilities.readFeatures(roadsUrl));
                 networkBufferOMS.points = DataUtilities.source(pointArray);
-                networkBufferOMS.bufferSize = 50.0;
-                networkBufferOMS.distance = 800.0;
+                networkBufferOMS.bufferSize = Config.BUFFER_SIZE;
+                networkBufferOMS.distance = Config.DISTANCE;
                 networkBufferOMS.run();
 
                 //The region is a SimpleFeatureSource object
@@ -125,14 +130,30 @@ public class GeneratePolygon implements MessageListener,Runnable {
                 * */
 
                 SimpleFeatureIterator features = regionSrc.getFeatures().features();
+                JSONParser jsonParser = new JSONParser();
                 while (features.hasNext()) {
                     SimpleFeature region = features.next();
                     FeatureJSON fjson_2 = new FeatureJSON();
                     String msg = fjson_2.toString(region);
 
-                    sender_1.sendMessage(msg);
-                    sender_2.sendMessage(msg);
-                    sender_3.sendMessage(msg);
+                    int currCounter;
+
+                    //Check the order
+                    BufferedReader br = new BufferedReader(new FileReader("./src/main/java/org/mccaughey/output/counter_region.json"));
+                    JSONObject counterObj = new JSONObject(br.readLine().trim());
+                    currCounter = counterObj.getInt("region_counter");
+
+
+                    while(currCounter < index-1){
+                        br.close();
+                        Thread.sleep(50);
+                        //Check the order again
+                        br = new BufferedReader(new FileReader("./src/main/java/org/mccaughey/output/counter_region.json"));
+                        counterObj = new JSONObject(br.readLine().trim());
+                        currCounter = counterObj.getInt("region_counter");
+                    }
+                    br.close();
+                    counterObj.put("region_counter", index);
 
                     //Write the feature into the file
                     File file_region = new File("./src/main/java/org/mccaughey/output/regionOMS.geojson");
@@ -140,6 +161,17 @@ public class GeneratePolygon implements MessageListener,Runnable {
                     fout_0.write((msg+",").getBytes());
                     fout_0.flush();
                     fout_0.close();
+
+                    sender_1.sendMessage(index + "--" + msg);
+                    sender_2.sendMessage(index + "--" + msg);
+                    sender_3.sendMessage(index + "--" + msg);
+
+                    //Change the counter value
+                    File file_counter = new File("./src/main/java/org/mccaughey/output/counter_region.json");
+                    FileOutputStream fout_00 = new FileOutputStream(file_counter, false);
+                    fout_00.write(counterObj.toString().getBytes());
+                    fout_00.flush();
+                    fout_00.close();
                 }
 
             }
@@ -148,9 +180,15 @@ public class GeneratePolygon implements MessageListener,Runnable {
             }
         }
         catch(JMSException e){
-            e.printStackTrace(System.out);
+            System.out.println(e.toString());
         }
         catch(IOException e){
+            System.out.println(e.toString());
+        }
+        catch(JSONException e){
+            System.out.println(e.toString());
+        }
+        catch(InterruptedException e){
             e.printStackTrace(System.out);
         }
 
