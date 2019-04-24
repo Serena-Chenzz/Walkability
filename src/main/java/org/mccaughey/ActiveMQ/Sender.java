@@ -29,7 +29,7 @@ import java.net.URL;
 
 public class Sender implements Runnable{
     //URL of the JMS server. DEFAULT_BROKER_URL will just mean that JMS server is on localhost
-    private static String url = "tcp://115.146.85.43:61616";
+    private static String url = "tcp://115.146.85.195:61616";
 
     // default broker URL is : tcp://localhost:61616"
     private String subject; // Queue Name.

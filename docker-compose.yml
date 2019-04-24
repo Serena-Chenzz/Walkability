@@ -1,0 +1,104 @@
+version: "3.7"
+services:
+  sendpoints:
+    image: serenalovedavid/walkability:sendpoints
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 2048M
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - type: bind
+          source: /mnt/sharedfolder/output/
+          target: /app/src/main/java/org/mccaughey/output/
+      - type: bind
+          source: /home/ubuntu/.m2
+          target: /root/.m2
+  sendpolygon:
+    image: serenalovedavid/walkability:sendpolygon
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 4096M
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - type: bind
+          source: /mnt/sharedfolder/output/
+          target: /app/src/main/java/org/mccaughey/output/
+      - type: bind
+          source: /home/ubuntu/.m2
+          target: /root/.m2
+  sendconnectivity:
+    image: serenalovedavid/walkability:sendconnectivity
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 2048M
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - type: bind
+          source: /mnt/sharedfolder/output/
+          target: /app/src/main/java/org/mccaughey/output/
+      - type: bind
+          source: /home/ubuntu/.m2
+          target: /root/.m2
+  senddensity:
+    image: serenalovedavid/walkability:senddensity
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 2048M
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - type: bind
+          source: /mnt/sharedfolder/output/
+          target: /app/src/main/java/org/mccaughey/output/
+      - type: bind
+          source: /home/ubuntu/.m2
+          target: /root/.m2
+  sendlum:
+    image: serenalovedavid/walkability:sendlum
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 2048M
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - type: bind
+          source: /mnt/sharedfolder/output/
+          target: /app/src/main/java/org/mccaughey/output/
+      - type: bind
+          source: /home/ubuntu/.m2
+          target: /root/.m2
+  sendzscore:
+    image: serenalovedavid/walkability:sendzscore
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 2048M
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - type: bind
+          source: /mnt/sharedfolder/output/
+          target: /app/src/main/java/org/mccaughey/output/
+      - type: bind
+          source: /home/ubuntu/.m2
+          target: /root/.m2
