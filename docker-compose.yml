@@ -12,11 +12,11 @@ services:
         condition: on-failure
     volumes:
       - type: bind
-          source: /mnt/sharedfolder/output/
-          target: /app/src/main/java/org/mccaughey/output/
+        source: /mnt/sharedfolder/output/
+        target: /app/src/main/java/org/mccaughey/output/
       - type: bind
-          source: /home/ubuntu/.m2
-          target: /root/.m2
+        source: /home/ubuntu/.m2
+        target: /root/.m2
   sendpolygon:
     image: serenalovedavid/walkability:sendpolygon
     deploy:
@@ -29,11 +29,11 @@ services:
         condition: on-failure
     volumes:
       - type: bind
-          source: /mnt/sharedfolder/output/
-          target: /app/src/main/java/org/mccaughey/output/
+        source: /mnt/sharedfolder/output/
+        target: /app/src/main/java/org/mccaughey/output/
       - type: bind
-          source: /home/ubuntu/.m2
-          target: /root/.m2
+        source: /home/ubuntu/.m2
+        target: /root/.m2
   sendconnectivity:
     image: serenalovedavid/walkability:sendconnectivity
     deploy:
@@ -46,11 +46,11 @@ services:
         condition: on-failure
     volumes:
       - type: bind
-          source: /mnt/sharedfolder/output/
-          target: /app/src/main/java/org/mccaughey/output/
+        source: /mnt/sharedfolder/output/
+        target: /app/src/main/java/org/mccaughey/output/
       - type: bind
-          source: /home/ubuntu/.m2
-          target: /root/.m2
+        source: /home/ubuntu/.m2
+        target: /root/.m2
   senddensity:
     image: serenalovedavid/walkability:senddensity
     deploy:
@@ -63,11 +63,11 @@ services:
         condition: on-failure
     volumes:
       - type: bind
-          source: /mnt/sharedfolder/output/
-          target: /app/src/main/java/org/mccaughey/output/
+        source: /mnt/sharedfolder/output/
+        target: /app/src/main/java/org/mccaughey/output/
       - type: bind
-          source: /home/ubuntu/.m2
-          target: /root/.m2
+        source: /home/ubuntu/.m2
+        target: /root/.m2
   sendlum:
     image: serenalovedavid/walkability:sendlum
     deploy:
@@ -80,11 +80,11 @@ services:
         condition: on-failure
     volumes:
       - type: bind
-          source: /mnt/sharedfolder/output/
-          target: /app/src/main/java/org/mccaughey/output/
+        source: /mnt/sharedfolder/output/
+        target: /app/src/main/java/org/mccaughey/output/
       - type: bind
-          source: /home/ubuntu/.m2
-          target: /root/.m2
+        source: /home/ubuntu/.m2
+        target: /root/.m2
   sendzscore:
     image: serenalovedavid/walkability:sendzscore
     deploy:
@@ -97,8 +97,8 @@ services:
         condition: on-failure
     volumes:
       - type: bind
-          source: /mnt/sharedfolder/output/
-          target: /app/src/main/java/org/mccaughey/output/
+        source: /mnt/sharedfolder/output/
+        target: /app/src/main/java/org/mccaughey/output/
       - type: bind
-          source: /home/ubuntu/.m2
-          target: /root/.m2
+        source: /home/ubuntu/.m2
+        target: /root/.m2
