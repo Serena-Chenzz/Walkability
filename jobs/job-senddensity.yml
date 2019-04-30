@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: process-item-senddensity
+  labels:
+    jobgroup: jobwalkability
+spec:
+  template:
+    metadata:
+      name: jobwalkability
+      labels:
+        jobgroup: jobwalkability
+    spec:
+      containers:
+        - name: senddensity
+          image: serenalovedavid/walkability:senddensity
+          command: ["sh", "-c", "echo Processing item SendDensity"]
+          volumeMounts:
+            - mountPath: /app/src/main/java/org/mccaughey/output/
+              name: output-file
+            - mountPath: /root/.m2
+              name: m2
+      restartPolicy:
+        condition: on-failure
+      volumes:
+        - name: output-file
+          hostPath:
+            path: /mnt/sharedfolder/output/
+        - name: m2
+          hostPath:
+            path: /home/ubuntu/.m2

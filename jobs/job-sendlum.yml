@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: process-item-sendlum
+  labels:
+    jobgroup: jobwalkability
+spec:
+  template:
+    metadata:
+      name: jobwalkability
+      labels:
+        jobgroup: jobwalkability
+    spec:
+      containers:
+        - name: sendlum
+          image: serenalovedavid/walkability:sendlum
+          command: ["sh", "-c", "echo Processing item SendLum"]
+          volumeMounts:
+            - mountPath: /app/src/main/java/org/mccaughey/output/
+              name: output-file
+            - mountPath: /root/.m2
+              name: m2
+      restartPolicy:
+        condition: on-failure
+      volumes:
+        - name: output-file
+          hostPath:
+            path: /mnt/sharedfolder/output/
+        - name: m2
+          hostPath:
+            path: /home/ubuntu/.m2
