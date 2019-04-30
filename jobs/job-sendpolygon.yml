@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: process-item-sendpoints
+  name: process-item-sendpolygon
   labels:
     jobgroup: jobwalkability
 spec:
@@ -12,8 +12,20 @@ spec:
         jobgroup: jobwalkability
     spec:
       containers:
-        - name: sendpoints
-          image: serenalovedavid/walkability:sendpoints
-          command: ["sh", "-c", "echo Processing item SendPoints"]
+        - name: sendpolygon
+          image: serenalovedavid/walkabilityswarm:sendpolygon
+          command: ["sh", "-c", "echo Processing item SendPolygon"]
+          volumeMounts:
+            - mountPath: /app/src/main/java/org/mccaughey/output/
+              name: output-file
+            - mountPath: /root/.m2
+              name: m2
       restartPolicy:
         condition: on-failure
+      volumes:
+        - name: output-file
+          hostPath:
+            path: /mnt/sharedfolder/output/
+        - name: m2
+          hostPath:
+            path: /home/ubuntu/.m2
