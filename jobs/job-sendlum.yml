@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: process-item-sendpoints
+  labels:
+    jobgroup: jobwalkability
+spec:
+  template:
+    metadata:
+      name: jobwalkability
+      labels:
+        jobgroup: jobwalkability
+    spec:
+      containers:
+        - name: sendpoints
+          image: serenalovedavid/walkability:sendpoints
+          command: ["sh", "-c", "echo Processing item SendPoints"]
+      restartPolicy:
+        condition: on-failure
