@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   sendpoints:
-    image: serenalovedavid/walkability:sendpoints
+    image: serenalovedavid/walkabilityswarm:sendpoints
     deploy:
       replicas: 1
       resources:
@@ -18,7 +18,7 @@ services:
         source: /home/ubuntu/.m2
         target: /root/.m2
   sendpolygon:
-    image: serenalovedavid/walkability:sendpolygon
+    image: serenalovedavid/walkabilityswarm:sendpolygon
     deploy:
       replicas: 2
       resources:
@@ -35,7 +35,7 @@ services:
         source: /home/ubuntu/.m2
         target: /root/.m2
   sendconnectivity:
-    image: serenalovedavid/walkability:sendconnectivity
+    image: serenalovedavid/walkabilityswarm:sendconnectivity
     deploy:
       replicas: 2
       resources:
@@ -52,7 +52,7 @@ services:
         source: /home/ubuntu/.m2
         target: /root/.m2
   senddensity:
-    image: serenalovedavid/walkability:senddensity
+    image: serenalovedavid/walkabilityswarm:senddensity
     deploy:
       replicas: 2
       resources:
@@ -69,7 +69,7 @@ services:
         source: /home/ubuntu/.m2
         target: /root/.m2
   sendlum:
-    image: serenalovedavid/walkability:sendlum
+    image: serenalovedavid/walkabilityswarm:sendlum
     deploy:
       replicas: 2
       resources:
@@ -86,7 +86,7 @@ services:
         source: /home/ubuntu/.m2
         target: /root/.m2
   sendzscore:
-    image: serenalovedavid/walkability:sendzscore
+    image: serenalovedavid/walkabilityswarm:sendzscore
     deploy:
       replicas: 1
       resources:
