@@ -1,30 +1,29 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: Pod
 metadata:
-  name: process-item-sendzscore
+  creationTimestamp: null
   labels:
-    jobgroup: jobwalkability
+    io.kompose.service: sendzscore
+  name: sendzscore
 spec:
-  template:
-    metadata:
-      name: jobwalkability
-      labels:
-        jobgroup: jobwalkability
-    spec:
-      containers:
-        - name: sendzscore
-          image: serenalovedavid/walkability:sendzscore
-          command: ["sh", "-c", "echo Processing item SendZscore"]
-          volumeMounts:
-            - mountPath: /app/src/main/java/org/mccaughey/output/
-              name: output-file
-            - mountPath: /root/.m2
-              name: m2
-      restartPolicy: OnFailure
-      volumes:
-        - name: output-file
-          hostPath:
-            path: /mnt/sharedfolder/output/
-        - name: m2
-          hostPath:
-            path: /home/ubuntu/.m2
+  containers:
+    - image: serenalovedavid/walkabilityswarm:sendzscore
+      name: sendzscore
+      resources:
+        limits:
+          cpu: 100m
+          memory: "2147483648"
+      volumeMounts:
+        - mountPath: /app/src/main/java/org/mccaughey/output/
+          name: sendzscore-hostpath0
+        - mountPath: /root/.m2
+          name: sendzscore-hostpath1
+  restartPolicy: OnFailure
+  volumes:
+    - hostPath:
+        path: /mnt/sharedfolder/output
+      name: sendzscore-hostpath0
+    - hostPath:
+        path: /home/ubuntu/.m2
+      name: sendzscore-hostpath1
+status: {}

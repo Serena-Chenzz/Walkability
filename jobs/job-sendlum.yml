@@ -1,30 +1,29 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: Pod
 metadata:
-  name: process-item-sendlum
+  creationTimestamp: null
   labels:
-    jobgroup: jobwalkability
+    io.kompose.service: sendlum
+  name: sendlum
 spec:
-  template:
-    metadata:
-      name: jobwalkability
-      labels:
-        jobgroup: jobwalkability
-    spec:
-      containers:
-        - name: sendlum
-          image: serenalovedavid/walkability:sendlum
-          command: ["sh", "-c", "echo Processing item SendLum"]
-          volumeMounts:
-            - mountPath: /app/src/main/java/org/mccaughey/output/
-              name: output-file
-            - mountPath: /root/.m2
-              name: m2
-      restartPolicy: OnFailure
-      volumes:
-        - name: output-file
-          hostPath:
-            path: /mnt/sharedfolder/output/
-        - name: m2
-          hostPath:
-            path: /home/ubuntu/.m2
+  containers:
+    - image: serenalovedavid/walkabilityswarm:sendlum
+      name: sendlum
+      resources:
+        limits:
+          cpu: 100m
+          memory: "2147483648"
+      volumeMounts:
+        - mountPath: /app/src/main/java/org/mccaughey/output/
+          name: sendlum-hostpath0
+        - mountPath: /root/.m2
+          name: sendlum-hostpath1
+  restartPolicy: OnFailure
+  volumes:
+    - hostPath:
+        path: /mnt/sharedfolder/output
+      name: sendlum-hostpath0
+    - hostPath:
+        path: /home/ubuntu/.m2
+      name: sendlum-hostpath1
+status: {}
