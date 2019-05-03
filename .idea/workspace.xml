@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4611c9d-bbe2-4446-a130-6631cbfdb8c4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/deploy_jobs/deploy-connectivity.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy_jobs/deploy-density.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy_jobs/deploy-lum.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy_jobs/deploy-polygon.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy_jobs/hpa-connectivity.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy_jobs/hpa-density.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy_jobs/hpa-lum.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy_jobs/hpa-polygon.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,19 +18,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/deploy_jobs/deploy-polygon.yml">
+        <entry file="file://$PROJECT_DIR$/deploy_jobs/hpa-density.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jobs/job-sendpolygon.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="29" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="29" />
+            <state relative-caret-position="270">
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -106,6 +97,10 @@
         <option value="$PROJECT_DIR$/deploy_jobs/deploy-density.yml" />
         <option value="$PROJECT_DIR$/deploy_jobs/deploy-lum.yml" />
         <option value="$PROJECT_DIR$/deploy_jobs/deploy-polygon.yml" />
+        <option value="$PROJECT_DIR$/deploy_jobs/hpa-connectivity.yml" />
+        <option value="$PROJECT_DIR$/deploy_jobs/hpa-polygon.yml" />
+        <option value="$PROJECT_DIR$/deploy_jobs/hpa-lum.yml" />
+        <option value="$PROJECT_DIR$/deploy_jobs/hpa-density.yml" />
       </list>
     </option>
   </component>
@@ -130,9 +125,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="53" />
-    <option name="y" value="30" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="118" />
+    <option name="y" value="51" />
     <option name="width" value="1400" />
     <option name="height" value="807" />
   </component>
@@ -168,7 +163,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556857825267" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556860325902" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -300,7 +295,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="53" y="30" width="1400" height="807" extended-state="0" />
+    <frame x="347" y="202" width="1400" height="807" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3173785" />
@@ -332,26 +327,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/src.zip!/java/net/URL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="915" column="5" lean-forward="true" selection-start-line="915" selection-start-column="5" selection-end-line="915" selection-end-column="5" />
-          <folding>
-            <element signature="e#33905#33906#0" expanded="true" />
-            <element signature="e#33944#33945#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/mccaughey/ActiveMQ/Rndm5ptsProjected.json" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/mccaughey/density/DwellingDensity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/Rndm5ptsProjected.json" />
     <entry file="file://$PROJECT_DIR$/src/main/java/org/mccaughey/ActiveMQ/Config.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/geotools/gt-main/10.6/gt-main-10.6.jar!/org/geotools/data/DataUtilities.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -562,13 +537,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy_jobs/deploy-connectivity.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jobs/job-sendconnectivity.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -576,24 +544,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy_jobs/deploy-density.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jobs/job-senddensity.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="28" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy_jobs/deploy-lum.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -611,10 +565,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy_jobs/deploy-polygon.yml">
+    <entry file="file://$PROJECT_DIR$/deploy_jobs/deploy-lum.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy_jobs/deploy-density.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy_jobs/deploy-connectivity.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy_jobs/deploy-polygon.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy_jobs/hpa-connectivity.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy_jobs/hpa-polygon.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy_jobs/hpa-lum.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy_jobs/hpa-density.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
         </state>
       </provider>
     </entry>
