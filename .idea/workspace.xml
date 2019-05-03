@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e4611c9d-bbe2-4446-a130-6631cbfdb8c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/jobs/job-sendconnectivity.yml" beforeDir="false" afterPath="$PROJECT_DIR$/jobs/job-sendconnectivity.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jobs/job-senddensity.yml" beforeDir="false" afterPath="$PROJECT_DIR$/jobs/job-senddensity.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,16 +40,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jobs/job-sendconnectivity.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+              <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jobs/job-senddensity.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -142,8 +141,8 @@
         <option value="$PROJECT_DIR$/jobs/job-sendlum.yml" />
         <option value="$PROJECT_DIR$/jobs/job-sendzscore.yml" />
         <option value="$PROJECT_DIR$/jobs/job-sendpolygon.yml" />
-        <option value="$PROJECT_DIR$/jobs/job-sendconnectivity.yml" />
         <option value="$PROJECT_DIR$/jobs/job-senddensity.yml" />
+        <option value="$PROJECT_DIR$/jobs/job-sendconnectivity.yml" />
       </list>
     </option>
   </component>
@@ -634,17 +633,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jobs/job-sendconnectivity.yml">
+    <entry file="file://$PROJECT_DIR$/jobs/job-senddensity.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jobs/job-senddensity.yml">
+    <entry file="file://$PROJECT_DIR$/jobs/job-sendconnectivity.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
         </state>
       </provider>
     </entry>
