@@ -22,7 +22,7 @@ spec:
         resources:
           limits:
             cpu: 100m
-            memory: "2147483648"
+            memory: "512000000"
         volumeMounts:
         - mountPath: /app/src/main/java/org/mccaughey/output/
           name: sendpolygon-hostpath0
