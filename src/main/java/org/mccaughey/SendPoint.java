@@ -111,7 +111,7 @@ public class SendPoint {
             fout_3.flush();
             fout_3.close();
 
-            URL pointsUrl = new File("./src/main/java/org/mccaughey/Rndm5ptsProjected.json").toURI().toURL();
+            URL pointsUrl = new File("./src/main/java/org/mccaughey/WAMediumPoints.json").toURI().toURL();
             SimpleFeatureIterator points = GeoJSONUtilities.readFeatures(pointsUrl).features();
             int counter = 0;
             while(points.hasNext()){
