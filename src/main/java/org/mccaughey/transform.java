@@ -25,18 +25,30 @@ public class transform {
             JSONArray newFeatures = new JSONArray();
 
             int counter = 1;
+            int pointCounter = 1;
 
             while(counter <= 200){
                 for(int i=0; i<features.size(); i++){
-                    newFeatures.add(features.get(i));
+                    JSONObject pointObj = new JSONObject();
+                    JSONObject oldPoint = (JSONObject) features.get(i);
+                    pointObj.put("type", oldPoint.get("type"));
+                    pointObj.put("geometry", oldPoint.get("geometry"));
+
+                    JSONObject properties = new JSONObject();
+                    properties.put("OBJECTID", pointCounter);
+                    properties.put("UID", pointCounter);
+                    pointObj.put("properties", properties);
+
+                    pointObj.put("id", "Rndm1000ptsProjected."+pointCounter);
+
+                    newFeatures.add(pointObj);
+                    pointCounter++;
                 }
                 counter++;
             }
 
-            resultObj.put("type", "FeatureCollection");
             resultObj.put("features", newFeatures);
-
-
+            resultObj.put("type", "FeatureCollection");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
