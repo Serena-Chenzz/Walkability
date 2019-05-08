@@ -8,7 +8,7 @@ import org.opengis.feature.simple.SimpleFeatureType;
 
 public class Config {
 
-    public static int NUM_OF_POINTS = 5;
+    public static int NUM_OF_POINTS = 100;
 
     public static double BUFFER_SIZE = 50.0;
 
