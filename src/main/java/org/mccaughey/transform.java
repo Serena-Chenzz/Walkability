@@ -27,7 +27,7 @@ public class transform {
             int counter = 1;
             int pointCounter = 1;
 
-            while(counter <= 200){
+            while(counter <=20 ){
                 for(int i=0; i<features.size(); i++){
                     JSONObject pointObj = new JSONObject();
                     JSONObject oldPoint = (JSONObject) features.get(i);
@@ -47,8 +47,9 @@ public class transform {
                 counter++;
             }
 
-            resultObj.put("features", newFeatures);
             resultObj.put("type", "FeatureCollection");
+            resultObj.put("features", newFeatures);
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -58,7 +59,7 @@ public class transform {
             e.printStackTrace();
         }
 
-        try (FileWriter file = new FileWriter("src/main/java/org/mccaughey/Rndm1000ptsProjected.json")) {
+        try (FileWriter file = new FileWriter("src/main/java/org/mccaughey/Rndm100ptsProjected.json")) {
 
             file.write(resultObj.toJSONString());
             file.flush();
