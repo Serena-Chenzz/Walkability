@@ -3,4 +3,3 @@ FROM baseimage
 RUN chmod +x start_zscore.sh
 
 ENTRYPOINT ["/app/start_zscore.sh"]
-
