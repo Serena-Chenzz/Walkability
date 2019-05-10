@@ -4,7 +4,7 @@ metadata:
   name: senddensity-deployment
 
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       io.kompose.service: senddensity
@@ -17,12 +17,11 @@ spec:
 
     spec:
       containers:
-        - image: serenalovedavid/walkabilityswarm:senddensity
+        - image: vivian94/walkability100v2:senddensity
           name: senddensity
           resources:
             limits:
               cpu: 100m
-              memory: "512000000"
           volumeMounts:
             - mountPath: /app/src/main/java/org/mccaughey/output/
               name: sendpolygon-hostpath0
@@ -37,3 +36,4 @@ spec:
         - hostPath:
             path:  /home/ubuntu/.m2
           name: sendpolygon-hostpath1
+

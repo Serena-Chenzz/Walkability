@@ -1,28 +1,27 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: sendlum-deployment
+  name: sendconnectivity-deployment
 
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: sendlum
+      io.kompose.service: sendconnectivity
 
   template:
     metadata:
       labels:
-        io.kompose.service: sendlum
-      name: sendlum
+        io.kompose.service: sendconnectivity
+      name: sendconnectivity
 
     spec:
       containers:
-        - image: serenalovedavid/walkabilityswarm:sendlum
-          name: sendlum
+        - image: vivian94/walkability100v2:sendconnectivity
+          name: sendconnectivity
           resources:
             limits:
-              cpu: 100m
-              memory: "512000000"
+              cpu: 500m
           volumeMounts:
             - mountPath: /app/src/main/java/org/mccaughey/output/
               name: sendpolygon-hostpath0

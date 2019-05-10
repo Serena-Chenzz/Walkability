@@ -32,7 +32,7 @@ import java.util.List;
 
 public class GenerateConnectivity implements MessageListener,Runnable {
     // URL of the JMS server
-    private static String url = "tcp://115.146.85.195:61616";
+    private static String url = "tcp://115.146.85.235:61616";
     // default broker URL is : tcp://localhost:61616"
 
     // Name of the queue

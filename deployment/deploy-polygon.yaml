@@ -4,7 +4,7 @@ metadata:
   name: sendpolygon-deployment
 
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       io.kompose.service: sendpolygon
@@ -17,12 +17,11 @@ spec:
 
     spec:
       containers:
-        - image: serenalovedavid/walkabilityswarm:sendpolygon
+        - image: vivian94/walkability100v2:sendpolygon
           name: sendpolygon
           resources:
             limits:
-              cpu: 100m
-              memory: "1024000000"
+              cpu: 600m
           volumeMounts:
             - mountPath: /app/src/main/java/org/mccaughey/output/
               name: sendpolygon-hostpath0
@@ -37,3 +36,4 @@ spec:
         - hostPath:
             path:  /home/ubuntu/.m2
           name: sendpolygon-hostpath1
+

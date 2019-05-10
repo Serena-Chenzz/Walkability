@@ -1,13 +1,9 @@
 version: "3.7"
 services:
   sendpoints:
-    image: serenalovedavid/walkabilityswarm:sendpoints
+    image: vivian94/walkability100v2:sendpoints
     deploy:
       replicas: 1
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 2048M
       restart_policy:
         condition: on-failure
     volumes:
@@ -18,13 +14,9 @@ services:
         source: /home/ubuntu/.m2
         target: /root/.m2
   sendpolygon:
-    image: serenalovedavid/walkabilityswarm:sendpolygon
+    image: vivian94/walkability100v2:sendpolygon
     deploy:
       replicas: 2
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 4096M
       restart_policy:
         condition: on-failure
     volumes:
@@ -35,13 +27,9 @@ services:
         source: /home/ubuntu/.m2
         target: /root/.m2
   sendconnectivity:
-    image: serenalovedavid/walkabilityswarm:sendconnectivity
+    image: vivian94/walkability100v2:sendconnectivity
     deploy:
-      replicas: 2
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 2048M
+      replicas: 1
       restart_policy:
         condition: on-failure
     volumes:
@@ -52,13 +40,9 @@ services:
         source: /home/ubuntu/.m2
         target: /root/.m2
   senddensity:
-    image: serenalovedavid/walkabilityswarm:senddensity
+    image: vivian94/walkability100v2:senddensity
     deploy:
-      replicas: 2
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 2048M
+      replicas: 1
       restart_policy:
         condition: on-failure
     volumes:
@@ -69,13 +53,9 @@ services:
         source: /home/ubuntu/.m2
         target: /root/.m2
   sendlum:
-    image: serenalovedavid/walkabilityswarm:sendlum
+    image: vivian94/walkability100v2:sendlum
     deploy:
-      replicas: 2
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 2048M
+      replicas: 1
       restart_policy:
         condition: on-failure
     volumes:
@@ -86,13 +66,9 @@ services:
         source: /home/ubuntu/.m2
         target: /root/.m2
   sendzscore:
-    image: serenalovedavid/walkabilityswarm:sendzscore
+    image: vivian94/walkability100v2:sendzscore
     deploy:
       replicas: 1
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 2048M
       restart_policy:
         condition: on-failure
     volumes:
